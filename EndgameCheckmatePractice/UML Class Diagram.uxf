@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>120</x>
+      <y>120</y>
+      <w>288</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>ChessSquare
+--
+-BACK_COLOR_DISABLED: System.Drawing.Color
+-BACK_COLOR_ENABLED: System.Drawing.Color
+-form: MainForm
+--
++COL: byte
++ROW: byte
++WhiteAttacked: boolean
++BlackAttacked: boolean
++Piece: ChessPiece
+--
++SetEnabled(enabled: boolean): void
++ChessSquare_Click(sender: object, e: EventArgs): void
++ToString(): string</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>120</x>
+      <y>32</y>
+      <w>272</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>System.Windows.Forms.PictureBox</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>248</x>
+      <y>48</y>
+      <w>24</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>328</x>
+      <y>384</y>
+      <w>288</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>_MainForm: System.Windows.Forms.Form_
+--
+-RANDOM: Random
+-SQUARES: Square[,]
+-numMoves: integer
+-white: List&lt;ChessPiece&gt;
+-blackKing: ChessPiece
+--
++SelectedPiece: ChessPiece
+--
+-btnExit_Click(sender: object, e: EventArgs): void
+-btn_KQ_vs_K_Click(sender: object, e: EventArgs): void
+-btn_KR_vs_K_Click(sender: object, e: EventArgs): void
+. . .</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>544</x>
+      <y>120</y>
+      <w>208</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>/ChessPiece/
+{abstract}
+--
+/+WHITE: boolean/
+/+ICON: System.Drawing.Image/
+/+MAX_ATTACKS: byte/
++Square: ChessSquare
++Attacks: List&lt;ChessSquare&gt;
++Moves: List&lt;ChessSquare&gt;
+--
+#findMovesInDirection(squares:
+     ChessSquare[,], dir: byte): void
+/+Move(newSquare: ChessSquare): void/
+/+Attack(squares: ChessSquare[,]): void/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>184</y>
+      <w>160</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=0..1
+&lt; on a</panel_attributes>
+    <additional_attributes>10.0;20.0;180.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>352</x>
+      <y>288</y>
+      <w>32</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1
+m2=64</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>576</x>
+      <y>288</y>
+      <w>48</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1
+m2=0..64</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>888</x>
+      <y>192</y>
+      <w>80</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>WhiteRook</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>744</x>
+      <y>152</y>
+      <w>160</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;180.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>888</x>
+      <y>152</y>
+      <w>80</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>WhiteKing</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>744</x>
+      <y>192</y>
+      <w>160</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;180.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>888</x>
+      <y>232</y>
+      <w>80</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>BlackKing</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>744</x>
+      <y>232</y>
+      <w>160</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;180.0;10.0</additional_attributes>
+  </element>
+</diagram>

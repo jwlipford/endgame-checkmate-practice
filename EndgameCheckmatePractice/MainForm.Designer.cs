@@ -1,6 +1,6 @@
 ﻿namespace EndgameCheckmatePractice
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -32,6 +32,7 @@
             this.btn_KQ_vs_K = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.btn_KR_vs_K = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // board
@@ -73,12 +74,24 @@
             this.btn_KR_vs_K.UseVisualStyleBackColor = true;
             this.btn_KR_vs_K.Click += new System.EventHandler(this.btn_KR_vs_K_Click);
             // 
-            // Form1
+            // btnExit
+            // 
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Location = new System.Drawing.Point(588, 460);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(90, 30);
+            this.btnExit.TabIndex = 4;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(740, 535);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btn_KR_vs_K);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btn_KQ_vs_K);
@@ -86,8 +99,8 @@
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(756, 574);
             this.MinimumSize = new System.Drawing.Size(96, 96);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "MainForm";
+            this.Text = "Endgame Checkmate Practice";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
@@ -99,6 +112,7 @@
         private System.Windows.Forms.Button btn_KQ_vs_K;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btn_KR_vs_K;
+        private System.Windows.Forms.Button btnExit;
     }
 }
 
