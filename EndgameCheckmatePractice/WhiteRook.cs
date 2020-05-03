@@ -23,17 +23,20 @@ namespace EndgameCheckmatePractice
 
         public override void FindAttacks(ChessSquare[,] squares)
         {
-            throw new NotImplementedException();
+            this.Attacks.Clear();
+            base.FindAttacksInDirection(squares, dir: 0);
+            base.FindAttacksInDirection(squares, dir: 2);
+            base.FindAttacksInDirection(squares, dir: 4);
+            base.FindAttacksInDirection(squares, dir: 6);
         }
 
         public override void FindMoves(ChessSquare[,] squares)
         {
-            // THIS CODE DOES NOT YET ACCOUNT FOR OTHER PIECES BLOCKING MOVEMENT
             this.Moves.Clear();
-            base.findMovesInDirection(squares, dir: 0);
-            base.findMovesInDirection(squares, dir: 2);
-            base.findMovesInDirection(squares, dir: 4);
-            base.findMovesInDirection(squares, dir: 6);
+            base.FindMovesInDirection(squares, dir: 0);
+            base.FindMovesInDirection(squares, dir: 2);
+            base.FindMovesInDirection(squares, dir: 4);
+            base.FindMovesInDirection(squares, dir: 6);
         }
     }
 }

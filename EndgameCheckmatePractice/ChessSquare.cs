@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -76,9 +73,6 @@ namespace EndgameCheckmatePractice
 
         private void ChessSquare_Click(object sender, EventArgs e)
         {
-            // DUMMY CODE!
-            MessageBox.Show("DUMMY MESSAGE\nYou clicked " + this.ToString());
-
             if (this.Piece != null)
             {
                 // Enable only those squares that this.Piece can move to or that have a white piece
@@ -105,6 +99,10 @@ namespace EndgameCheckmatePractice
                     else
                         square.SetEnabled(true);
                 form.SelectedPiece = null;
+
+
+                // TEST
+                form.AnalyzeAttacks();
             }
         }
 
