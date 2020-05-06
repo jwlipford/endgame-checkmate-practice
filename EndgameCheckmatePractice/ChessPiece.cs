@@ -18,16 +18,9 @@ namespace EndgameCheckmatePractice
         public ChessSquare Square;
         // Square this piece is currently on
 
-        public List<ChessSquare> Attacks { get; }
-        // List of all squares attacked or guarded by this piece.
-
         public List<ChessSquare> Moves { get; }
-        // List of all squares this piece can move to. This is different from Attacks for two
-        // reasons: First, pieces of the same color as this piece may be attacked/guarded by this
-        // piece without this piece being able to move to those pieces' squares immediately.
-        // Second, a rook, bishops, or queen may attack squares behind a piece of the opposite
-        // color without being able to move to those squares because it would have to stop to take
-        // that piece.
+        // List of all squares this piece can move to. This list does not include squares on which
+        // there are pieces of the same color that this piece is protecting.
 
         public static sbyte[,] DIRECTIONS = new sbyte[8,2]
         // 8 pairs, each representing an orthogonal or diagonal direction as a vector. This array
@@ -48,16 +41,16 @@ namespace EndgameCheckmatePractice
         }
 
         public abstract void FindAttacks(ChessSquare[,] squares);
-        // Finds what Squares are attacked by this piece. Sets this.Attacks accordingly, and sets
-        // WhiteAttacked/BlackAttacked to true for attacked Squares.
+        // Finds what Squares are attacked by this piece. Sets WhiteAttacked/BlackAttacked to true
+        // for those Squares.
 
         public abstract void FindMoves(ChessSquare[,] squares);
-        // Finds what Squares this piece can move to. Sets this.Moves accordingly.
+        // Finds what Squares this piece can move to. Sets this.Moves to a list of all and only
+        // those squares.
 
         public ChessPiece(ChessSquare square)
         {
             this.Move(square);
-            this.Attacks = new List<ChessSquare>(capacity: MAX_ATTACKS);
             this.Moves = new List<ChessSquare>(capacity: MAX_ATTACKS);
         }
 
@@ -97,10 +90,11 @@ namespace EndgameCheckmatePractice
         }
 
         protected void FindAttacksInDirection(ChessSquare[,] squares, byte dir)
-        // Similar to FindMovesInDirection, but finds Attacks instead of Moves. Also sets
-        // WhiteAttacked or BlackAttacked to true for all attacked squares.
+        // Similar to FindMovesInDirection. Sets WhiteAttacked or BlackAttacked to true for all
+        // attacked squares in direction dir. The line of attack is blocked by a piece of the same
+        // color but, unlike the line of moves, continues beyond a piece of the opposite color.
         // This method is implemented almost exactly the same as FindMovesInDirection. Only the
-        // body of the while loop is different.
+        // middle of the body of the while loop is different.
         {
             if (dir < 0)
                 throw new ArgumentException("dir < 0");
@@ -117,20 +111,13 @@ namespace EndgameCheckmatePractice
             {
                 ChessSquare square = squares[c, r];
 
-                // Unlike in FindMovesInDirection, set square.WhiteAttacked or .BlackAttacked.
                 if (WHITE)
                     square.WhiteAttacked = true;
                 else
                     square.BlackAttacked = true;
 
-                // Unlike in FindMovesInDirection, check for a piece of the same color after adding
-                // the square.
-                this.Attacks.Add(square);
                 if (square.Piece != null && (square.Piece.WHITE == this.WHITE))
                     break;
-
-                // Unlike in FindMovesInDirection, do not check for a piece of the opposite color.
-                // The line of attack can move through such a piece.
 
                 c += dc;
                 r += dr;

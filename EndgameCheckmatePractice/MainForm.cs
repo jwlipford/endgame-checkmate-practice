@@ -30,28 +30,13 @@ namespace EndgameCheckmatePractice
             this.RANDOM = new Random();
 
             this.SQUARES = new ChessSquare[8, 8];
-            for(byte c = 0; c < 8; ++c)
-                for(byte r = 0; r < 8; ++r)
+            for (byte c = 0; c < 8; ++c)
+                for (byte r = 0; r < 8; ++r)
                 {
                     this.SQUARES[c, r] = new ChessSquare(col: c, row: r, form: this);
                     board.Controls.Add(this.SQUARES[c, r]);
                     this.SQUARES[c, r].SetBounds(x: 64 * c, y: 64 * r, 64, 64);
                 }
-        }
-
-        public void AnalyzeAttacks()
-        // Sets Attacks field for all pieces, and sets BlackAttacked and WhiteAttacked for all
-        // squares
-        {
-            foreach(ChessSquare square in SQUARES)
-            {
-                square.WhiteAttacked = false;
-                square.BlackAttacked = false;
-            }
-            if(blackKing != null)
-                blackKing.FindAttacks(SQUARES);
-            foreach (ChessPiece piece in white)
-                piece.FindAttacks(SQUARES);
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -80,9 +65,20 @@ namespace EndgameCheckmatePractice
             MessageBox.Show("Not implemented");
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e) { } // Do nothing
+
+        public void AnalyzeAttacks()
+        // Sets BlackAttacked and WhiteAttacked for all squares
         {
-            
+            foreach (ChessSquare square in SQUARES)
+            {
+                square.WhiteAttacked = false;
+                square.BlackAttacked = false;
+            }
+            if (blackKing != null)
+                blackKing.FindAttacks(SQUARES);
+            foreach (ChessPiece piece in white)
+                piece.FindAttacks(SQUARES);
         }
 
         private void btn_KQ_vs_K_Click(object sender, EventArgs e)

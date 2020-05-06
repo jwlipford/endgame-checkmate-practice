@@ -23,7 +23,6 @@ namespace EndgameCheckmatePractice
 
         public override void FindAttacks(ChessSquare[,] squares)
         {
-            this.Attacks.Clear();
             base.FindAttacksInDirection(squares, dir: 0);
             base.FindAttacksInDirection(squares, dir: 2);
             base.FindAttacksInDirection(squares, dir: 4);

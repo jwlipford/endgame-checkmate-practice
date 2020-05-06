@@ -47,10 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlackKing.cs" />
     <Compile Include="ChessPiece.cs" />
     <Compile Include="ChessSquare.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="King.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

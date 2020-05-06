@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace EndgameCheckmatePractice
 {
@@ -51,12 +49,7 @@ namespace EndgameCheckmatePractice
                 int c = this.Square.COL + POSSIBLE_RELATIVE_MOVES[p, 0];
                 int r = this.Square.ROW + POSSIBLE_RELATIVE_MOVES[p, 1];
                 if (c >= 0 && r >= 0 && c <= 7 && r <= 7)
-                {
-                    ChessSquare square = squares[c, r];
-                    // Unlike in FindMoves, add square even if a white piece is on it.
-                    this.Moves.Add(square);
-                    square.WhiteAttacked = true;
-                }
+                    squares[c, r].WhiteAttacked = true;
             }
         }
     }
