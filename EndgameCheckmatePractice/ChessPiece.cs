@@ -31,13 +31,17 @@ namespace EndgameCheckmatePractice
         };
 
         public void Move(ChessSquare newSquare)
-        // Removes this ChessPiece from its current Square and moves it to newSquare. The Squares'
-        // images are automatically updated in that class
+        // Removes this ChessPiece from its current ChessSquare and moves it to newSquare. If a
+        // piece is on newSquare, that piece is replaced (captured) by this piece. The two
+        // ChessSquares' images are automatically updated in that class through assignment.
         {
             if (this.Square != null)
                 this.Square.Piece = null;
+            if (newSquare.Piece != null)
+                newSquare.Piece.Square = null;
             this.Square = newSquare;
-            this.Square.Piece = this;
+            newSquare.Piece = this;
+            // The first 4 lines are just as important as the last 2. Omitting them caused errors.
         }
 
         public abstract void FindAttacks(ChessSquare[,] squares);
@@ -52,6 +56,11 @@ namespace EndgameCheckmatePractice
         {
             this.Move(square);
             this.Moves = new List<ChessSquare>(capacity: MAX_ATTACKS);
+        }
+
+        public override string ToString()
+        {
+            return this.GetType().ToString() + " on " + this.Square.ToString();
         }
 
         protected void FindMovesInDirection(ChessSquare[,] squares, byte dir)

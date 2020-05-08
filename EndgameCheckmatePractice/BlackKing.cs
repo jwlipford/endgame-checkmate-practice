@@ -4,7 +4,7 @@ using System;
 
 namespace EndgameCheckmatePractice
 {
-    class BlackKing : King
+    public class BlackKing : King
     {
         public override bool WHITE { get { return false; } }
 

@@ -6,7 +6,7 @@ namespace EndgameCheckmatePractice
 {
     public partial class MainForm : Form
     {
-        readonly Random RANDOM;
+        private readonly Random RANDOM;
         
         public readonly ChessSquare[,] SQUARES;
         // After Form1 construction, SQUARES will hold 8*8=64 Squares, which are added to Panel
@@ -15,11 +15,15 @@ namespace EndgameCheckmatePractice
         int numMoves;
         // Number of moves White has played
 
-        public List<ChessPiece> white;
+        public List<ChessPiece> White;
         // White's pieces
 
-        ChessPiece blackKing;
+        public BlackKing BlackKing;
         // Black's king
+
+        private List<ChessSquare> whiteStartSquares;
+
+        private ChessSquare blackKingStartSquare;
 
         public ChessPiece SelectedPiece;
 
@@ -55,17 +59,50 @@ namespace EndgameCheckmatePractice
             }
 
             // Free resources
-            white = null;
-            blackKing = null;
+            White = null;
+            BlackKing = null;
         }
 
         private void btnReset_Click(object sender, EventArgs e)
         // Resets pieces to their initial positions
         {
             MessageBox.Show("Not implemented");
+            /*
+            numMoves = 0;
+            BlackKing.Move(blackKingStartSquare);
+            for (int i = 0; i < White.Count; ++i)
+                White[i].Move(whiteStartSquares[i]);
+            foreach (ChessSquare square in SQUARES)
+                if (square.Piece != null && square.Piece.WHITE)
+                    square.SetEnabled(true);
+                else
+                    square.SetEnabled(false); */
         }
 
         private void Form1_Load(object sender, EventArgs e) { } // Do nothing
+
+        private ChessSquare[] randomSquares(byte length)
+        // Generates an array with the specified length such that no square has the same
+        // coordinates as another
+        {
+            ChessSquare[] squares = new ChessSquare[length];
+            for (int i = 0; i < length; ++i)
+            {
+                bool cont = true;
+                while (cont)
+                {
+                    squares[i] = SQUARES[RANDOM.Next(8), RANDOM.Next(8)];
+                    cont = false;
+                    for (int j = 0; j < i; ++j)
+                        if (squares[i] == squares[j])
+                        {
+                            cont = true;
+                            break;
+                        }
+                }
+            }
+            return squares;
+        }
 
         public void AnalyzeAttacks()
         // Sets BlackAttacked and WhiteAttacked for all squares
@@ -75,11 +112,54 @@ namespace EndgameCheckmatePractice
                 square.WhiteAttacked = false;
                 square.BlackAttacked = false;
             }
-            if (blackKing != null)
-                blackKing.FindAttacks(SQUARES);
-            foreach (ChessPiece piece in white)
+            if (BlackKing != null)
+                BlackKing.FindAttacks(SQUARES);
+            foreach (ChessPiece piece in White)
                 piece.FindAttacks(SQUARES);
         }
+
+        public void TakeBlackTurn(out bool gameOver)
+        // Takes Black's turn, moving its king. Checks for and handles checkmate, stalemate, and
+        // draw by lack of material. In these situations, sets gameOver to true; otherwise, sets it
+        // to false. Does not enable/disable squares.
+        {
+            ++numMoves;
+            AnalyzeAttacks();
+
+            BlackKing.FindMoves(this.SQUARES);
+            ChessSquare BlackKingChoice = BlackKing.ChooseMove();
+
+            if (BlackKingChoice != null)
+            {
+                if (BlackKingChoice.Piece != null)
+                    White.Remove(BlackKingChoice.Piece);
+                BlackKing.Move(BlackKingChoice);
+
+                if (White.Count == 1) // Draw by lack of material    // DUMMY -- extend this
+                {
+                    // TODO: Find how to increase font size (probably make a custom message-box form)
+                    MessageBox.Show("Draw by lack of material 😞\nIn " + numMoves + " moves");
+                    gameOver = true;
+                }
+                else
+                {
+                    AnalyzeAttacks();
+                    gameOver = false;
+                }
+            }
+            else // Black King cannot move, is in checkmate or stalemate
+            {
+                if (BlackKing.Square.WhiteAttacked)
+                    MessageBox.Show("Checkmate! 😁\nIn " + numMoves + " moves");
+                else
+                    MessageBox.Show("Stalemate 😞\nIn " + numMoves + " moves");
+                gameOver = true;
+            }
+        }
+
+
+
+        // ------  Button click handlers for new games  ------
 
         private void btn_KQ_vs_K_Click(object sender, EventArgs e)
         // Start a game with white king and queen vs black king
@@ -98,33 +178,42 @@ namespace EndgameCheckmatePractice
         {
             btnClear_Click(null, null);
             numMoves = 0;
-            white = new List<ChessPiece>(capacity: 4);
-            blackKing = null; // placeholder -- assign!
+            White = new List<ChessPiece>(capacity: 3);
 
-            white.Add(new WhiteKing(SQUARES[RANDOM.Next(8), RANDOM.Next(8)]));
-            white.Add(new WhiteRook(SQUARES[RANDOM.Next(8), RANDOM.Next(8)]));
-            white.Add(new WhiteRook(SQUARES[RANDOM.Next(8), RANDOM.Next(8)]));
-            // If two land on same square, the second will replace the first, I think.
-            // Add functionality to deal with this!
+            // Put pieces on random squares, but make sure Black King is not in checkmate or
+            // stalemate
+            ChessSquare[] startSquares = randomSquares(4);
+            BlackKing = new BlackKing(startSquares[0]);
+            White.Add(new WhiteKing(startSquares[1]));
+            White.Add(new WhiteRook(startSquares[2]));
+            White.Add(new WhiteRook(startSquares[3]));
+            AnalyzeAttacks();
+            BlackKing.FindMoves(SQUARES);
+            while (BlackKing.Square.WhiteAttacked || BlackKing.Moves.Count == 0)
+            {
+                startSquares = randomSquares(4);
+                BlackKing.Move(startSquares[0]);
+                White[0].Move(startSquares[1]);
+                White[1].Move(startSquares[2]);
+                White[2].Move(startSquares[3]);
+                AnalyzeAttacks();
+                BlackKing.FindMoves(SQUARES);
+            }
 
-            foreach(ChessPiece piece in white)
+            // Set start squares
+            blackKingStartSquare = BlackKing.Square;
+            whiteStartSquares = new List<ChessSquare>(capacity: 3);
+            foreach (ChessPiece piece in White)
+                whiteStartSquares.Add(piece.Square);
+
+            // Enable squares with white pieces
+            foreach (ChessPiece piece in White)
                 piece.Square.SetEnabled(true);
         }
 
         private void btn_KN_vs_K_Click(object sender, EventArgs e)
         {
-            btnClear_Click(null, null);
-            numMoves = 0;
-            white = new List<ChessPiece>(capacity: 3);
-            blackKing = null; // placeholder -- assign!
-
-            white.Add(new WhiteKing(SQUARES[RANDOM.Next(8), RANDOM.Next(8)]));
-            white.Add(new WhiteKnight(SQUARES[RANDOM.Next(8), RANDOM.Next(8)]));
-            // If two land on same square, the second will replace the first, I think.
-            // Add functionality to deal with this!
-
-            foreach (ChessPiece piece in white)
-                piece.Square.SetEnabled(true);
+            MessageBox.Show("Not implemented");
         }
 
 

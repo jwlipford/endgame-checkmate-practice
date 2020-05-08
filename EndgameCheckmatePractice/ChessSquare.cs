@@ -90,19 +90,22 @@ namespace EndgameCheckmatePractice
             }
             else // this square is empty
             {
-                // Move form.SelectedPiece to this square. Enable only those squares that have a
-                // white piece on them. Set form.SelectedPiece to null.
+                // Move form.SelectedPiece to this square, and set form.SelectedPiece to null.
+                // Then, take Black's turn, moving its king. Then, enable only those squares that
+                // have a white piece on them. 
                 form.SelectedPiece.Move(newSquare: this);
-                foreach (ChessSquare square in form.SQUARES)
-                    if (square.Piece == null || !square.Piece.WHITE)
-                        square.SetEnabled(false);
-                    else
-                        square.SetEnabled(true);
                 form.SelectedPiece = null;
 
+                foreach (ChessSquare square in form.SQUARES)
+                    square.SetEnabled(false);
 
-                // TEST
-                form.AnalyzeAttacks();
+                bool gameOver;
+                form.TakeBlackTurn(out gameOver);
+
+                if (!gameOver)
+                    foreach (ChessSquare square in form.SQUARES)
+                        if (square.Piece != null && square.Piece.WHITE)
+                            square.SetEnabled(true);
             }
         }
 

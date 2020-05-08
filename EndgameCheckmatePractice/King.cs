@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace EndgameCheckmatePractice
 {
-    abstract class King : ChessPiece
+    public abstract class King : ChessPiece
     {
         public override byte MAX_ATTACKS { get { return 8; } }
 
