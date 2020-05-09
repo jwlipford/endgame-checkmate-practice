@@ -52,6 +52,12 @@
             this.lblFileG = new System.Windows.Forms.Label();
             this.lblFileF = new System.Windows.Forms.Label();
             this.lblFileE = new System.Windows.Forms.Label();
+            this.gbEasy = new System.Windows.Forms.GroupBox();
+            this.gbMedium = new System.Windows.Forms.GroupBox();
+            this.gbImpossible = new System.Windows.Forms.GroupBox();
+            this.gbEasy.SuspendLayout();
+            this.gbMedium.SuspendLayout();
+            this.gbImpossible.SuspendLayout();
             this.SuspendLayout();
             // 
             // board
@@ -64,12 +70,12 @@
             // 
             // btn_KQ_vs_K
             // 
-            this.btn_KQ_vs_K.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_KQ_vs_K.Location = new System.Drawing.Point(609, 59);
+            this.btn_KQ_vs_K.Font = new System.Drawing.Font("Segoe UI Symbol", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_KQ_vs_K.Location = new System.Drawing.Point(21, 28);
             this.btn_KQ_vs_K.Name = "btn_KQ_vs_K";
-            this.btn_KQ_vs_K.Size = new System.Drawing.Size(106, 30);
+            this.btn_KQ_vs_K.Size = new System.Drawing.Size(128, 36);
             this.btn_KQ_vs_K.TabIndex = 1;
-            this.btn_KQ_vs_K.Text = "(K+Q vs K)";
+            this.btn_KQ_vs_K.Text = "♔♕ vs ♚";
             this.btn_KQ_vs_K.UseVisualStyleBackColor = true;
             this.btn_KQ_vs_K.Click += new System.EventHandler(this.btn_KQ_vs_K_Click);
             // 
@@ -86,12 +92,12 @@
             // 
             // btn_KR_vs_K
             // 
-            this.btn_KR_vs_K.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_KR_vs_K.Location = new System.Drawing.Point(609, 95);
+            this.btn_KR_vs_K.Font = new System.Drawing.Font("Segoe UI Symbol", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_KR_vs_K.Location = new System.Drawing.Point(21, 25);
             this.btn_KR_vs_K.Name = "btn_KR_vs_K";
-            this.btn_KR_vs_K.Size = new System.Drawing.Size(106, 30);
+            this.btn_KR_vs_K.Size = new System.Drawing.Size(128, 36);
             this.btn_KR_vs_K.TabIndex = 3;
-            this.btn_KR_vs_K.Text = "(K+R vs K)";
+            this.btn_KR_vs_K.Text = "♔♖ vs ♚";
             this.btn_KR_vs_K.UseVisualStyleBackColor = true;
             this.btn_KR_vs_K.Click += new System.EventHandler(this.btn_KR_vs_K_Click);
             // 
@@ -108,23 +114,23 @@
             // 
             // btn_KRR_vs_K
             // 
-            this.btn_KRR_vs_K.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_KRR_vs_K.Location = new System.Drawing.Point(609, 131);
+            this.btn_KRR_vs_K.Font = new System.Drawing.Font("Segoe UI Symbol", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_KRR_vs_K.Location = new System.Drawing.Point(21, 70);
             this.btn_KRR_vs_K.Name = "btn_KRR_vs_K";
-            this.btn_KRR_vs_K.Size = new System.Drawing.Size(106, 30);
+            this.btn_KRR_vs_K.Size = new System.Drawing.Size(128, 36);
             this.btn_KRR_vs_K.TabIndex = 5;
-            this.btn_KRR_vs_K.Text = "K+R+R vs K";
+            this.btn_KRR_vs_K.Text = "♔♖♖ vs ♚";
             this.btn_KRR_vs_K.UseVisualStyleBackColor = true;
             this.btn_KRR_vs_K.Click += new System.EventHandler(this.btn_KRR_vs_K_Click);
             // 
             // btn_KN_vs_K
             // 
-            this.btn_KN_vs_K.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_KN_vs_K.Location = new System.Drawing.Point(609, 167);
+            this.btn_KN_vs_K.Font = new System.Drawing.Font("Segoe UI Symbol", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_KN_vs_K.Location = new System.Drawing.Point(21, 25);
             this.btn_KN_vs_K.Name = "btn_KN_vs_K";
-            this.btn_KN_vs_K.Size = new System.Drawing.Size(106, 30);
+            this.btn_KN_vs_K.Size = new System.Drawing.Size(128, 36);
             this.btn_KN_vs_K.TabIndex = 6;
-            this.btn_KN_vs_K.Text = "K+N vs K";
+            this.btn_KN_vs_K.Text = "♔♘ vs ♚";
             this.btn_KN_vs_K.UseVisualStyleBackColor = true;
             this.btn_KN_vs_K.Click += new System.EventHandler(this.btn_KN_vs_K_Click);
             // 
@@ -323,12 +329,49 @@
             this.lblFileE.Text = "F";
             this.lblFileE.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // gbEasy
+            // 
+            this.gbEasy.Controls.Add(this.btn_KRR_vs_K);
+            this.gbEasy.Controls.Add(this.btn_KQ_vs_K);
+            this.gbEasy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbEasy.Location = new System.Drawing.Point(579, 12);
+            this.gbEasy.Name = "gbEasy";
+            this.gbEasy.Size = new System.Drawing.Size(173, 120);
+            this.gbEasy.TabIndex = 24;
+            this.gbEasy.TabStop = false;
+            this.gbEasy.Text = "Easy";
+            // 
+            // gbMedium
+            // 
+            this.gbMedium.Controls.Add(this.btn_KR_vs_K);
+            this.gbMedium.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbMedium.Location = new System.Drawing.Point(579, 139);
+            this.gbMedium.Name = "gbMedium";
+            this.gbMedium.Size = new System.Drawing.Size(173, 77);
+            this.gbMedium.TabIndex = 25;
+            this.gbMedium.TabStop = false;
+            this.gbMedium.Text = "Medium";
+            // 
+            // gbImpossible
+            // 
+            this.gbImpossible.Controls.Add(this.btn_KN_vs_K);
+            this.gbImpossible.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbImpossible.Location = new System.Drawing.Point(579, 222);
+            this.gbImpossible.Name = "gbImpossible";
+            this.gbImpossible.Size = new System.Drawing.Size(173, 77);
+            this.gbImpossible.TabIndex = 26;
+            this.gbImpossible.TabStop = false;
+            this.gbImpossible.Text = "Impossible";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(764, 557);
+            this.Controls.Add(this.gbImpossible);
+            this.Controls.Add(this.gbMedium);
+            this.Controls.Add(this.gbEasy);
             this.Controls.Add(this.lblFileH);
             this.Controls.Add(this.lblFileG);
             this.Controls.Add(this.lblFileF);
@@ -346,12 +389,8 @@
             this.Controls.Add(this.lblFileB);
             this.Controls.Add(this.lblFileA);
             this.Controls.Add(this.btnClear);
-            this.Controls.Add(this.btn_KN_vs_K);
-            this.Controls.Add(this.btn_KRR_vs_K);
             this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.btn_KR_vs_K);
             this.Controls.Add(this.btnReset);
-            this.Controls.Add(this.btn_KQ_vs_K);
             this.Controls.Add(this.board);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(780, 596);
@@ -359,6 +398,9 @@
             this.Name = "MainForm";
             this.Text = "Endgame Checkmate Practice";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.gbEasy.ResumeLayout(false);
+            this.gbMedium.ResumeLayout(false);
+            this.gbImpossible.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -389,6 +431,9 @@
         private System.Windows.Forms.Label lblFileG;
         private System.Windows.Forms.Label lblFileF;
         private System.Windows.Forms.Label lblFileE;
+        private System.Windows.Forms.GroupBox gbEasy;
+        private System.Windows.Forms.GroupBox gbMedium;
+        private System.Windows.Forms.GroupBox gbImpossible;
     }
 }
 

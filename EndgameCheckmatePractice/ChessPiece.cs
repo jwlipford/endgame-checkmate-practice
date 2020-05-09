@@ -60,7 +60,7 @@ namespace EndgameCheckmatePractice
 
         public override string ToString()
         {
-            return this.GetType().ToString() + " on " + this.Square.ToString();
+            return this.GetType().Name + " on " + this.Square.ToString();
         }
 
         protected void FindMovesInDirection(ChessSquare[,] squares, byte dir)

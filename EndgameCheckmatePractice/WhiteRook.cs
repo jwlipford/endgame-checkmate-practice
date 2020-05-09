@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace EndgameCheckmatePractice
 {
@@ -10,11 +8,7 @@ namespace EndgameCheckmatePractice
 
         public override Image ICON
         {
-            get
-            {
-                return Image.FromFile(@"..\..\images\white_rook.png");
-                // This relative filepath works!
-            }
+            get { return Image.FromFile(@"..\..\images\white_rook.png"); }
         }
 
         public override byte MAX_ATTACKS { get { return 14; } }

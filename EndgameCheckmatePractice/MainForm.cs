@@ -83,8 +83,10 @@ namespace EndgameCheckmatePractice
 
         private ChessSquare[] randomSquares(byte length)
         // Generates an array with the specified length such that no square has the same
-        // coordinates as another
+        // coordinates as another. length must not exceed 64.
         {
+            if (length > 64)
+                throw new ArgumentException("length > 64");
             ChessSquare[] squares = new ChessSquare[length];
             for (int i = 0; i < length; ++i)
             {
@@ -161,16 +163,70 @@ namespace EndgameCheckmatePractice
 
         // ------  Button click handlers for new games  ------
 
+        private void startNewGame(Type[] whitePieceTypes)
+        // Starts a new game with a Black King and white pieces of Types whitePieceTypes. Each Type
+        // in whitePieceTypes must be a subclass of ChessPiece, must not be abstract, and must be
+        // white. Use this method when a button that says something like "King, Rook, and Rook vs
+        // King" is clicked.
+        {
+            // Check whitePieceTypes for argument errors
+            foreach (Type type in whitePieceTypes)
+            {
+                if (!type.IsSubclassOf(typeof(ChessPiece)))
+                    throw new ArgumentException(
+                        "Each type in whitePieceTypes must be a subclass of ChessPiece.");
+                if (type.IsAbstract)
+                    throw new ArgumentException("No type in whitePieceTypes may be abstract");
+            }
+
+            // Basic setup
+            btnClear_Click(null, null);
+            numMoves = 0;
+            White = new List<ChessPiece>(capacity: whitePieceTypes.Length);
+            byte numPieces = (byte)(whitePieceTypes.Length + 1); // +1 for Black King
+
+            // Put pieces on random squares, but make sure Black King is not in checkmate or
+            // stalemate
+            ChessSquare[] initSquares = randomSquares(numPieces);
+            BlackKing = new BlackKing(initSquares[0]);
+            for (int i = 1; i < initSquares.Length; ++i)
+                White.Add( // Dis wite heer bout to git complikated
+                    (ChessPiece)(whitePieceTypes[i-1]
+                    .GetConstructor(types: new Type[] {typeof(ChessSquare)})
+                    .Invoke(parameters: new object[] {initSquares[i]})));
+            AnalyzeAttacks();
+            BlackKing.FindMoves(SQUARES);
+            while (BlackKing.Square.WhiteAttacked || BlackKing.Moves.Count == 0)
+            {
+                initSquares = randomSquares(numPieces);
+                BlackKing.Move(initSquares[0]);
+                for (int i = 1; i < initSquares.Length; ++i)
+                    White[i - 1].Move(initSquares[i]);
+                AnalyzeAttacks();
+                BlackKing.FindMoves(SQUARES);
+            }
+
+            // Set start squares
+            blackKingStartSquare = BlackKing.Square;
+            whiteStartSquares = new List<ChessSquare>(capacity: whitePieceTypes.Length);
+            foreach (ChessPiece piece in White)
+                whiteStartSquares.Add(piece.Square);
+
+            // Enable squares with white pieces
+            foreach (ChessPiece piece in White)
+                piece.Square.SetEnabled(true);
+        }
+
         private void btn_KQ_vs_K_Click(object sender, EventArgs e)
         // Start a game with white king and queen vs black king
         {
-            MessageBox.Show("Not implemented");
+            startNewGame(whitePieceTypes: new Type[] { typeof(WhiteKing), typeof(WhiteQueen) });
         }
 
         private void btn_KR_vs_K_Click(object sender, EventArgs e)
         // Start a game with white king and rook vs black king
         {
-            MessageBox.Show("Not implemented");
+            startNewGame(whitePieceTypes: new Type[] { typeof(WhiteKing), typeof(WhiteRook) });
         }
 
         private void btn_KRR_vs_K_Click(object sender, EventArgs e)
@@ -213,7 +269,7 @@ namespace EndgameCheckmatePractice
 
         private void btn_KN_vs_K_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Not implemented");
+            startNewGame(whitePieceTypes: new Type[] { typeof(WhiteKing), typeof(WhiteKnight) });
         }
 
 
