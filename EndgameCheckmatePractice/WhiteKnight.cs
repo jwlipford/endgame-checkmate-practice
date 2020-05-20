@@ -8,7 +8,7 @@ namespace EndgameCheckmatePractice
 
         public override Image ICON
         {
-            get { return Image.FromFile(@"..\..\images\white_knight.png"); }
+            get { return Properties.Resources.white_knight; }
         }
 
         public override byte MAX_ATTACKS { get { return 8; } }

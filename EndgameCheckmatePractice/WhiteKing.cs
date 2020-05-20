@@ -8,7 +8,7 @@ namespace EndgameCheckmatePractice
 
         public override Image ICON
         {
-            get { return Image.FromFile(@"..\..\images\white_king.png"); }
+            get { return Properties.Resources.white_king; }
         }
 
         public WhiteKing(ChessSquare square) : base(square) { }

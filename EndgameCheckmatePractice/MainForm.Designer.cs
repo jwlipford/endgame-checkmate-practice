@@ -29,13 +29,6 @@
         private void InitializeComponent()
         {
             this.board = new System.Windows.Forms.Panel();
-            this.btn_KQ_vs_K = new System.Windows.Forms.Button();
-            this.btnReset = new System.Windows.Forms.Button();
-            this.btn_KR_vs_K = new System.Windows.Forms.Button();
-            this.btnExit = new System.Windows.Forms.Button();
-            this.btn_KRR_vs_K = new System.Windows.Forms.Button();
-            this.btn_KN_vs_K = new System.Windows.Forms.Button();
-            this.btnClear = new System.Windows.Forms.Button();
             this.lblFileA = new System.Windows.Forms.Label();
             this.lblFileB = new System.Windows.Forms.Label();
             this.lblFileC = new System.Windows.Forms.Label();
@@ -52,12 +45,12 @@
             this.lblFileG = new System.Windows.Forms.Label();
             this.lblFileF = new System.Windows.Forms.Label();
             this.lblFileE = new System.Windows.Forms.Label();
-            this.gbEasy = new System.Windows.Forms.GroupBox();
-            this.gbMedium = new System.Windows.Forms.GroupBox();
-            this.gbImpossible = new System.Windows.Forms.GroupBox();
-            this.gbEasy.SuspendLayout();
-            this.gbMedium.SuspendLayout();
-            this.gbImpossible.SuspendLayout();
+            this.btnNewGame = new System.Windows.Forms.Button();
+            this.btnHowToPlay = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.btnRPC = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // board
@@ -67,83 +60,6 @@
             this.board.Name = "board";
             this.board.Size = new System.Drawing.Size(512, 512);
             this.board.TabIndex = 0;
-            // 
-            // btn_KQ_vs_K
-            // 
-            this.btn_KQ_vs_K.Font = new System.Drawing.Font("Segoe UI Symbol", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_KQ_vs_K.Location = new System.Drawing.Point(21, 28);
-            this.btn_KQ_vs_K.Name = "btn_KQ_vs_K";
-            this.btn_KQ_vs_K.Size = new System.Drawing.Size(128, 36);
-            this.btn_KQ_vs_K.TabIndex = 1;
-            this.btn_KQ_vs_K.Text = "♔♕ vs ♚";
-            this.btn_KQ_vs_K.UseVisualStyleBackColor = true;
-            this.btn_KQ_vs_K.Click += new System.EventHandler(this.btn_KQ_vs_K_Click);
-            // 
-            // btnReset
-            // 
-            this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReset.Location = new System.Drawing.Point(626, 396);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(74, 30);
-            this.btnReset.TabIndex = 2;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            // 
-            // btn_KR_vs_K
-            // 
-            this.btn_KR_vs_K.Font = new System.Drawing.Font("Segoe UI Symbol", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_KR_vs_K.Location = new System.Drawing.Point(21, 25);
-            this.btn_KR_vs_K.Name = "btn_KR_vs_K";
-            this.btn_KR_vs_K.Size = new System.Drawing.Size(128, 36);
-            this.btn_KR_vs_K.TabIndex = 3;
-            this.btn_KR_vs_K.Text = "♔♖ vs ♚";
-            this.btn_KR_vs_K.UseVisualStyleBackColor = true;
-            this.btn_KR_vs_K.Click += new System.EventHandler(this.btn_KR_vs_K_Click);
-            // 
-            // btnExit
-            // 
-            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(626, 468);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(74, 30);
-            this.btnExit.TabIndex = 4;
-            this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // btn_KRR_vs_K
-            // 
-            this.btn_KRR_vs_K.Font = new System.Drawing.Font("Segoe UI Symbol", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_KRR_vs_K.Location = new System.Drawing.Point(21, 70);
-            this.btn_KRR_vs_K.Name = "btn_KRR_vs_K";
-            this.btn_KRR_vs_K.Size = new System.Drawing.Size(128, 36);
-            this.btn_KRR_vs_K.TabIndex = 5;
-            this.btn_KRR_vs_K.Text = "♔♖♖ vs ♚";
-            this.btn_KRR_vs_K.UseVisualStyleBackColor = true;
-            this.btn_KRR_vs_K.Click += new System.EventHandler(this.btn_KRR_vs_K_Click);
-            // 
-            // btn_KN_vs_K
-            // 
-            this.btn_KN_vs_K.Font = new System.Drawing.Font("Segoe UI Symbol", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_KN_vs_K.Location = new System.Drawing.Point(21, 25);
-            this.btn_KN_vs_K.Name = "btn_KN_vs_K";
-            this.btn_KN_vs_K.Size = new System.Drawing.Size(128, 36);
-            this.btn_KN_vs_K.TabIndex = 6;
-            this.btn_KN_vs_K.Text = "♔♘ vs ♚";
-            this.btn_KN_vs_K.UseVisualStyleBackColor = true;
-            this.btn_KN_vs_K.Click += new System.EventHandler(this.btn_KN_vs_K_Click);
-            // 
-            // btnClear
-            // 
-            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.Location = new System.Drawing.Point(626, 432);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(74, 30);
-            this.btnClear.TabIndex = 7;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // lblFileA
             // 
@@ -329,39 +245,69 @@
             this.lblFileE.Text = "F";
             this.lblFileE.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // gbEasy
+            // btnNewGame
             // 
-            this.gbEasy.Controls.Add(this.btn_KRR_vs_K);
-            this.gbEasy.Controls.Add(this.btn_KQ_vs_K);
-            this.gbEasy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbEasy.Location = new System.Drawing.Point(579, 12);
-            this.gbEasy.Name = "gbEasy";
-            this.gbEasy.Size = new System.Drawing.Size(173, 120);
-            this.gbEasy.TabIndex = 24;
-            this.gbEasy.TabStop = false;
-            this.gbEasy.Text = "Easy";
+            this.btnNewGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewGame.Location = new System.Drawing.Point(602, 148);
+            this.btnNewGame.Name = "btnNewGame";
+            this.btnNewGame.Size = new System.Drawing.Size(115, 30);
+            this.btnNewGame.TabIndex = 25;
+            this.btnNewGame.Text = "New Game";
+            this.btnNewGame.UseVisualStyleBackColor = true;
+            this.btnNewGame.Click += new System.EventHandler(this.btnNewGame_Click);
             // 
-            // gbMedium
+            // btnHowToPlay
             // 
-            this.gbMedium.Controls.Add(this.btn_KR_vs_K);
-            this.gbMedium.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbMedium.Location = new System.Drawing.Point(579, 139);
-            this.gbMedium.Name = "gbMedium";
-            this.gbMedium.Size = new System.Drawing.Size(173, 77);
-            this.gbMedium.TabIndex = 25;
-            this.gbMedium.TabStop = false;
-            this.gbMedium.Text = "Medium";
+            this.btnHowToPlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnHowToPlay.Location = new System.Drawing.Point(602, 257);
+            this.btnHowToPlay.Name = "btnHowToPlay";
+            this.btnHowToPlay.Size = new System.Drawing.Size(115, 26);
+            this.btnHowToPlay.TabIndex = 26;
+            this.btnHowToPlay.Text = "How to Play";
+            this.btnHowToPlay.UseVisualStyleBackColor = true;
             // 
-            // gbImpossible
+            // btnClear
             // 
-            this.gbImpossible.Controls.Add(this.btn_KN_vs_K);
-            this.gbImpossible.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbImpossible.Location = new System.Drawing.Point(579, 222);
-            this.gbImpossible.Name = "gbImpossible";
-            this.gbImpossible.Size = new System.Drawing.Size(173, 77);
-            this.gbImpossible.TabIndex = 26;
-            this.gbImpossible.TabStop = false;
-            this.gbImpossible.Text = "Impossible";
+            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.Location = new System.Drawing.Point(622, 220);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(74, 30);
+            this.btnClear.TabIndex = 29;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnExit
+            // 
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Location = new System.Drawing.Point(622, 342);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(74, 30);
+            this.btnExit.TabIndex = 28;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // btnReset
+            // 
+            this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReset.Location = new System.Drawing.Point(622, 184);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(74, 30);
+            this.btnReset.TabIndex = 27;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // btnRPC
+            // 
+            this.btnRPC.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnRPC.Location = new System.Drawing.Point(602, 289);
+            this.btnRPC.Name = "btnRPC";
+            this.btnRPC.Size = new System.Drawing.Size(115, 47);
+            this.btnRPC.TabIndex = 30;
+            this.btnRPC.Text = "Recommended Piece Sets";
+            this.btnRPC.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -369,9 +315,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(764, 557);
-            this.Controls.Add(this.gbImpossible);
-            this.Controls.Add(this.gbMedium);
-            this.Controls.Add(this.gbEasy);
+            this.Controls.Add(this.btnRPC);
+            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.btnReset);
+            this.Controls.Add(this.btnHowToPlay);
+            this.Controls.Add(this.btnNewGame);
             this.Controls.Add(this.lblFileH);
             this.Controls.Add(this.lblFileG);
             this.Controls.Add(this.lblFileF);
@@ -388,9 +337,6 @@
             this.Controls.Add(this.lblFileC);
             this.Controls.Add(this.lblFileB);
             this.Controls.Add(this.lblFileA);
-            this.Controls.Add(this.btnClear);
-            this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.btnReset);
             this.Controls.Add(this.board);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(780, 596);
@@ -398,9 +344,6 @@
             this.Name = "MainForm";
             this.Text = "Endgame Checkmate Practice";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.gbEasy.ResumeLayout(false);
-            this.gbMedium.ResumeLayout(false);
-            this.gbImpossible.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -408,13 +351,6 @@
         #endregion
 
         private System.Windows.Forms.Panel board;
-        private System.Windows.Forms.Button btn_KQ_vs_K;
-        private System.Windows.Forms.Button btnReset;
-        private System.Windows.Forms.Button btn_KR_vs_K;
-        private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Button btn_KRR_vs_K;
-        private System.Windows.Forms.Button btn_KN_vs_K;
-        private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Label lblFileA;
         private System.Windows.Forms.Label lblFileB;
         private System.Windows.Forms.Label lblFileC;
@@ -431,9 +367,12 @@
         private System.Windows.Forms.Label lblFileG;
         private System.Windows.Forms.Label lblFileF;
         private System.Windows.Forms.Label lblFileE;
-        private System.Windows.Forms.GroupBox gbEasy;
-        private System.Windows.Forms.GroupBox gbMedium;
-        private System.Windows.Forms.GroupBox gbImpossible;
+        private System.Windows.Forms.Button btnNewGame;
+        private System.Windows.Forms.Button btnHowToPlay;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.Button btnRPC;
     }
 }
 

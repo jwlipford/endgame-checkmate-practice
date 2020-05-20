@@ -67,7 +67,10 @@ namespace EndgameCheckmatePractice
         // Resets pieces to their initial positions
         {
             MessageBox.Show("Not implemented");
-            /*
+            return;
+
+            // TODO: Deal with pieces that are captured
+
             numMoves = 0;
             BlackKing.Move(blackKingStartSquare);
             for (int i = 0; i < White.Count; ++i)
@@ -76,7 +79,7 @@ namespace EndgameCheckmatePractice
                 if (square.Piece != null && square.Piece.WHITE)
                     square.SetEnabled(true);
                 else
-                    square.SetEnabled(false); */
+                    square.SetEnabled(false);
         }
 
         private void Form1_Load(object sender, EventArgs e) { } // Do nothing
@@ -152,6 +155,7 @@ namespace EndgameCheckmatePractice
             else // Black King cannot move, is in checkmate or stalemate
             {
                 if (BlackKing.Square.WhiteAttacked)
+                    //MessageBox.Show("Checkmate! 😁\nIn " + numMoves + " moves");
                     MessageBox.Show("Checkmate! 😁\nIn " + numMoves + " moves");
                 else
                     MessageBox.Show("Stalemate 😞\nIn " + numMoves + " moves");
@@ -159,11 +163,14 @@ namespace EndgameCheckmatePractice
             }
         }
 
+        private void btnNewGame_Click(object sender, EventArgs e)
+        // Opens a NewGameForm
+        {
+            NewGameForm ngf = new NewGameForm(this);
+            ngf.Show();
+        }
 
-
-        // ------  Button click handlers for new games  ------
-
-        private void startNewGame(Type[] whitePieceTypes)
+        public void StartNewGame(Type[] whitePieceTypes)
         // Starts a new game with a Black King and white pieces of Types whitePieceTypes. Each Type
         // in whitePieceTypes must be a subclass of ChessPiece, must not be abstract, and must be
         // white. Use this method when a button that says something like "King, Rook, and Rook vs
@@ -191,9 +198,9 @@ namespace EndgameCheckmatePractice
             BlackKing = new BlackKing(initSquares[0]);
             for (int i = 1; i < initSquares.Length; ++i)
                 White.Add( // Dis wite heer bout to git complikated
-                    (ChessPiece)(whitePieceTypes[i-1]
-                    .GetConstructor(types: new Type[] {typeof(ChessSquare)})
-                    .Invoke(parameters: new object[] {initSquares[i]})));
+                    (ChessPiece)(whitePieceTypes[i - 1]
+                    .GetConstructor(types: new Type[] { typeof(ChessSquare) })
+                    .Invoke(parameters: new object[] { initSquares[i] })));
             AnalyzeAttacks();
             BlackKing.FindMoves(SQUARES);
             while (BlackKing.Square.WhiteAttacked || BlackKing.Moves.Count == 0)
@@ -216,62 +223,5 @@ namespace EndgameCheckmatePractice
             foreach (ChessPiece piece in White)
                 piece.Square.SetEnabled(true);
         }
-
-        private void btn_KQ_vs_K_Click(object sender, EventArgs e)
-        // Start a game with white king and queen vs black king
-        {
-            startNewGame(whitePieceTypes: new Type[] { typeof(WhiteKing), typeof(WhiteQueen) });
-        }
-
-        private void btn_KR_vs_K_Click(object sender, EventArgs e)
-        // Start a game with white king and rook vs black king
-        {
-            startNewGame(whitePieceTypes: new Type[] { typeof(WhiteKing), typeof(WhiteRook) });
-        }
-
-        private void btn_KRR_vs_K_Click(object sender, EventArgs e)
-        // Start a game with white king and two rooks vs black king
-        {
-            btnClear_Click(null, null);
-            numMoves = 0;
-            White = new List<ChessPiece>(capacity: 3);
-
-            // Put pieces on random squares, but make sure Black King is not in checkmate or
-            // stalemate
-            ChessSquare[] startSquares = randomSquares(4);
-            BlackKing = new BlackKing(startSquares[0]);
-            White.Add(new WhiteKing(startSquares[1]));
-            White.Add(new WhiteRook(startSquares[2]));
-            White.Add(new WhiteRook(startSquares[3]));
-            AnalyzeAttacks();
-            BlackKing.FindMoves(SQUARES);
-            while (BlackKing.Square.WhiteAttacked || BlackKing.Moves.Count == 0)
-            {
-                startSquares = randomSquares(4);
-                BlackKing.Move(startSquares[0]);
-                White[0].Move(startSquares[1]);
-                White[1].Move(startSquares[2]);
-                White[2].Move(startSquares[3]);
-                AnalyzeAttacks();
-                BlackKing.FindMoves(SQUARES);
-            }
-
-            // Set start squares
-            blackKingStartSquare = BlackKing.Square;
-            whiteStartSquares = new List<ChessSquare>(capacity: 3);
-            foreach (ChessPiece piece in White)
-                whiteStartSquares.Add(piece.Square);
-
-            // Enable squares with white pieces
-            foreach (ChessPiece piece in White)
-                piece.Square.SetEnabled(true);
-        }
-
-        private void btn_KN_vs_K_Click(object sender, EventArgs e)
-        {
-            startNewGame(whitePieceTypes: new Type[] { typeof(WhiteKing), typeof(WhiteKnight) });
-        }
-
-
     }
 }
