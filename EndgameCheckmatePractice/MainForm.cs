@@ -82,7 +82,14 @@ namespace EndgameCheckmatePractice
                     square.SetEnabled(false);
         }
 
-        private void Form1_Load(object sender, EventArgs e) { } // Do nothing
+
+        // TODO: What if the user clicks this twice?
+        private void btnNewGame_Click(object sender, EventArgs e)
+        // Opens a NewGameForm
+        {
+            NewGameForm ngf = new NewGameForm(this);
+            ngf.Show();
+        }
 
         private ChessSquare[] randomSquares(byte length)
         // Generates an array with the specified length such that no square has the same
@@ -121,53 +128,6 @@ namespace EndgameCheckmatePractice
                 BlackKing.FindAttacks(SQUARES);
             foreach (ChessPiece piece in White)
                 piece.FindAttacks(SQUARES);
-        }
-
-        public void TakeBlackTurn(out bool gameOver)
-        // Takes Black's turn, moving its king. Checks for and handles checkmate, stalemate, and
-        // draw by lack of material. In these situations, sets gameOver to true; otherwise, sets it
-        // to false. Does not enable/disable squares.
-        {
-            ++numMoves;
-            AnalyzeAttacks();
-
-            BlackKing.FindMoves(this.SQUARES);
-            ChessSquare BlackKingChoice = BlackKing.ChooseMove();
-
-            if (BlackKingChoice != null)
-            {
-                if (BlackKingChoice.Piece != null)
-                    White.Remove(BlackKingChoice.Piece);
-                BlackKing.Move(BlackKingChoice);
-
-                if (White.Count == 1) // Draw by lack of material    // DUMMY -- extend this
-                {
-                    // TODO: Find how to increase font size (probably make a custom message-box form)
-                    MessageBox.Show("Draw by lack of material 😞\nIn " + numMoves + " moves");
-                    gameOver = true;
-                }
-                else
-                {
-                    AnalyzeAttacks();
-                    gameOver = false;
-                }
-            }
-            else // Black King cannot move, is in checkmate or stalemate
-            {
-                if (BlackKing.Square.WhiteAttacked)
-                    //MessageBox.Show("Checkmate! 😁\nIn " + numMoves + " moves");
-                    MessageBox.Show("Checkmate! 😁\nIn " + numMoves + " moves");
-                else
-                    MessageBox.Show("Stalemate 😞\nIn " + numMoves + " moves");
-                gameOver = true;
-            }
-        }
-
-        private void btnNewGame_Click(object sender, EventArgs e)
-        // Opens a NewGameForm
-        {
-            NewGameForm ngf = new NewGameForm(this);
-            ngf.Show();
         }
 
         public void StartNewGame(Type[] whitePieceTypes)
@@ -222,6 +182,46 @@ namespace EndgameCheckmatePractice
             // Enable squares with white pieces
             foreach (ChessPiece piece in White)
                 piece.Square.SetEnabled(true);
+        }
+
+        public void TakeBlackTurn(out bool gameOver)
+        // Takes Black's turn, moving its king. Checks for and handles checkmate, stalemate, and
+        // draw by lack of material. In these situations, sets gameOver to true; otherwise, sets it
+        // to false. Does not enable/disable squares.
+        {
+            ++numMoves;
+            AnalyzeAttacks();
+
+            BlackKing.FindMoves(this.SQUARES);
+            ChessSquare BlackKingChoice = BlackKing.ChooseMove();
+
+            if (BlackKingChoice != null)
+            {
+                if (BlackKingChoice.Piece != null)
+                    White.Remove(BlackKingChoice.Piece);
+                BlackKing.Move(BlackKingChoice);
+
+                if (White.Count == 1) // Draw by lack of material    // DUMMY -- extend this
+                {
+                    // TODO: Find how to increase font size (probably make a custom message-box form)
+                    MessageBox.Show("Draw by lack of material 😞\nIn " + numMoves + " moves");
+                    gameOver = true;
+                }
+                else
+                {
+                    AnalyzeAttacks();
+                    gameOver = false;
+                }
+            }
+            else // Black King cannot move, is in checkmate or stalemate
+            {
+                if (BlackKing.Square.WhiteAttacked)
+                    //MessageBox.Show("Checkmate! 😁\nIn " + numMoves + " moves");
+                    MessageBox.Show("Checkmate! 😁\nIn " + numMoves + " moves");
+                else
+                    MessageBox.Show("Stalemate 😞\nIn " + numMoves + " moves");
+                gameOver = true;
+            }
         }
     }
 }

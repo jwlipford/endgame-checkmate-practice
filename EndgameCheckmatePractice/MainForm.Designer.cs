@@ -343,7 +343,6 @@
             this.MinimumSize = new System.Drawing.Size(160, 160);
             this.Name = "MainForm";
             this.Text = "Endgame Checkmate Practice";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }

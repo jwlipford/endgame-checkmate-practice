@@ -6,12 +6,17 @@ namespace EndgameCheckmatePractice
 {
     public partial class NewGameForm : Form
     {
-        private MainForm mainForm;
+        private readonly MainForm mainForm;
         // The Form from which this Form was opened
-        
-        private byte numPieces;
+
+        private int numPieces;
         // The total number of white pieces currently indicated on this Form
-        
+
+        private readonly NumericUpDown[] nuds;
+        private readonly Type[] pieceTypes;
+        // These parallel arrays represent the NumericUpDowns in this Form and their corresponding
+        // ChessPiece Types.
+
         public NewGameForm(MainForm mainForm)
         {
             InitializeComponent();
@@ -19,13 +24,22 @@ namespace EndgameCheckmatePractice
             this.mainForm = mainForm;
             numPieces = 1;
 
-            nudQueen.ValueChanged += countPieces;
-            nudRook.ValueChanged += countPieces;
-            nudBishop.ValueChanged += countPieces;
-            nudKnight.ValueChanged += countPieces;
-        }
+            nuds = new NumericUpDown[]
+            {
+                nudQueen, nudRook, nudBishop, nudKnight,
+                nudMann, nudWazir, nudFerz, nudChampion, nudWizard
+            };
 
-        private void NewGameForm_Load(object sender, EventArgs e) { } // Do nothing
+            pieceTypes = new Type[]
+            {
+                typeof(WhiteQueen), typeof(WhiteRook), typeof(WhiteBishop), typeof(WhiteKnight),
+                typeof(WhiteMann), typeof(WhiteWazir), typeof(WhiteFerz), typeof(WhiteChampion),
+                typeof(WhiteWizard),
+            };
+
+            foreach (NumericUpDown nud in nuds)
+                nud.ValueChanged += countPieces;
+        }
 
         private void btnCancel_Click(object sender, EventArgs e)
         // Closes this Window
@@ -39,8 +53,10 @@ namespace EndgameCheckmatePractice
         // lblNumPieces.ForeColor and btnClick.Enabled depending on whether the number of pieces is
         // too big.
         {
-            numPieces = 
-                (byte)(1 + nudQueen.Value + nudRook.Value + nudBishop.Value + nudKnight.Value);
+            numPieces = 1;
+            foreach (NumericUpDown nud in nuds)
+                numPieces += (int)(nud.Value);
+
             lblNumPieces.Text = "Number of pieces: " + numPieces;
             if (numPieces > 8) // The player can have up to 8 pieces
             {
@@ -65,25 +81,13 @@ namespace EndgameCheckmatePractice
             Type[] whitePieceTypes = new Type[numPieces];
             int i = 0;
             whitePieceTypes[i] = typeof(WhiteKing);
-            for (int j = 0; j < nudQueen.Value; ++j)
+            for (int j = 0; j < nuds.Length; ++j)
             {
-                ++i;
-                whitePieceTypes[i] = typeof(WhiteQueen);
-            }
-            for (int j = 0; j < nudRook.Value; ++j)
-            {
-                ++i;
-                whitePieceTypes[i] = typeof(WhiteRook);
-            }
-            for (int j = 0; j < nudBishop.Value; ++j)
-            {
-                ++i;
-                whitePieceTypes[i] = typeof(WhiteBishop);
-            }
-            for (int j = 0; j < nudKnight.Value; ++j)
-            {
-                ++i;
-                whitePieceTypes[i] = typeof(WhiteKnight);
+                for (int k = 0; k < nuds[j].Value; ++k)
+                {
+                    ++i;
+                    whitePieceTypes[i] = pieceTypes[j];
+                }
             }
 
             mainForm.StartNewGame(whitePieceTypes);
