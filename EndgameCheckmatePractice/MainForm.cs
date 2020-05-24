@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EndgameCheckmatePractice.documents;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -63,8 +64,8 @@ namespace EndgameCheckmatePractice
             BlackKing = null;
         }
 
-        private void btnReset_Click(object sender, EventArgs e)
-        // Resets pieces to their initial positions
+        private void btnResetOP_Click(object sender, EventArgs e)
+        // Restarts game with pieces in their original positions
         {
             MessageBox.Show("Not implemented");
             return;
@@ -82,6 +83,14 @@ namespace EndgameCheckmatePractice
                     square.SetEnabled(false);
         }
 
+        private void btnResetNP_Click(object sender, EventArgs e)
+        // Restarts game with pieces in new positions
+        {
+            MessageBox.Show("Not implemented");
+            return;
+
+        }
+
 
         // TODO: What if the user clicks this twice?
         private void btnNewGame_Click(object sender, EventArgs e)
@@ -89,6 +98,22 @@ namespace EndgameCheckmatePractice
         {
             NewGameForm ngf = new NewGameForm(this);
             ngf.Show();
+        }
+
+        public void btnHowToPlay_Click(object sender, EventArgs e)
+        // Opens How To Play instructions
+        {
+            LargeTextInfoForm ltif =
+                new LargeTextInfoForm("How to Play", Properties.Resources.How_To_Play);
+            ltif.Show();
+        }
+
+        public void btnRPS_Click(object sender, EventArgs e)
+        // Open Recommended Piece Sets document
+        {
+            LargeTextInfoForm ltif = new LargeTextInfoForm(
+                "Recommended Pieces Sets", Properties.Resources.Recommended_Piece_Sets, 350);
+            ltif.Show();
         }
 
         private ChessSquare[] randomSquares(byte length)

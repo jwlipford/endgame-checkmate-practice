@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewGameForm));
             this.labelChoose = new System.Windows.Forms.Label();
             this.lblVersus = new System.Windows.Forms.Label();
             this.btnStart = new System.Windows.Forms.Button();
@@ -91,11 +92,11 @@
             this.labelChoose.AutoSize = true;
             this.labelChoose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelChoose.ForeColor = System.Drawing.Color.White;
-            this.labelChoose.Location = new System.Drawing.Point(147, 9);
+            this.labelChoose.Location = new System.Drawing.Point(149, 9);
             this.labelChoose.Name = "labelChoose";
-            this.labelChoose.Size = new System.Drawing.Size(321, 20);
+            this.labelChoose.Size = new System.Drawing.Size(348, 20);
             this.labelChoose.TabIndex = 0;
-            this.labelChoose.Text = "Choose your Pieces! (You can have up to 8.)";
+            this.labelChoose.Text = "Choose your Pieces! (You can have from 2 to 8.)";
             // 
             // lblVersus
             // 
@@ -109,6 +110,7 @@
             // 
             // btnStart
             // 
+            this.btnStart.Enabled = false;
             this.btnStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStart.Location = new System.Drawing.Point(397, 161);
             this.btnStart.Name = "btnStart";
@@ -321,7 +323,7 @@
             // 
             this.lblNumPieces.AutoSize = true;
             this.lblNumPieces.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumPieces.ForeColor = System.Drawing.Color.DarkGreen;
+            this.lblNumPieces.ForeColor = System.Drawing.Color.Maroon;
             this.lblNumPieces.Location = new System.Drawing.Point(94, 166);
             this.lblNumPieces.Name = "lblNumPieces";
             this.lblNumPieces.Size = new System.Drawing.Size(150, 20);
@@ -532,6 +534,7 @@
             this.btnRPC.TabIndex = 61;
             this.btnRPC.Text = "Recommended Piece Sets";
             this.btnRPC.UseVisualStyleBackColor = true;
+            this.btnRPC.Click += new System.EventHandler(this.btnRPC_Click);
             // 
             // NewGameForm
             // 
@@ -576,6 +579,7 @@
             this.Controls.Add(this.lblVersus);
             this.Controls.Add(this.labelChoose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "NewGameForm";
             this.Text = "New Game";

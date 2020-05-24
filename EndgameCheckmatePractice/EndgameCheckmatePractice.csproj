@@ -37,12 +37,9 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -52,6 +49,12 @@
     <Compile Include="ChessPiece.cs" />
     <Compile Include="ChessSquare.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="LargeTextInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LargeTextInfoForm.Designer.cs">
+      <DependentUpon>LargeTextInfoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="King.cs" />
     <Compile Include="MainForm.cs">
@@ -78,6 +81,9 @@
     <Compile Include="WhiteRook.cs" />
     <Compile Include="WhiteWazir.cs" />
     <Compile Include="WhiteWizard.cs" />
+    <EmbeddedResource Include="LargeTextInfoForm.resx">
+      <DependentUpon>LargeTextInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -145,6 +151,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="images\white_fairy_ferz.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -9,3 +9,4 @@ C:\Users\Jeffrey Lipford\Documents\GitHub\EndgameCheckmatePractice\EndgameCheckm
 C:\Users\Jeffrey Lipford\Documents\GitHub\EndgameCheckmatePractice\EndgameCheckmatePractice\obj\Debug\EndgameCheckmatePractice.MainForm.resources
 C:\Users\Jeffrey Lipford\Documents\GitHub\EndgameCheckmatePractice\EndgameCheckmatePractice\obj\Debug\EndgameCheckmatePractice.csproj.CoreCompileInputs.cache
 C:\Users\Jeffrey Lipford\Documents\GitHub\EndgameCheckmatePractice\EndgameCheckmatePractice\obj\Debug\EndgameCheckmatePractice.NewGameForm.resources
+C:\Users\Jeffrey Lipford\Documents\GitHub\EndgameCheckmatePractice\EndgameCheckmatePractice\obj\Debug\EndgameCheckmatePractice.documents.LargeTextInfoForm.resources

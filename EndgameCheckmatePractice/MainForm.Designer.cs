@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.board = new System.Windows.Forms.Panel();
             this.lblFileA = new System.Windows.Forms.Label();
             this.lblFileB = new System.Windows.Forms.Label();
@@ -49,8 +50,9 @@
             this.btnHowToPlay = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
-            this.btnReset = new System.Windows.Forms.Button();
-            this.btnRPC = new System.Windows.Forms.Button();
+            this.btnResetOP = new System.Windows.Forms.Button();
+            this.btnRPS = new System.Windows.Forms.Button();
+            this.btnResetNP = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // board
@@ -248,9 +250,9 @@
             // btnNewGame
             // 
             this.btnNewGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewGame.Location = new System.Drawing.Point(602, 148);
+            this.btnNewGame.Location = new System.Drawing.Point(605, 141);
             this.btnNewGame.Name = "btnNewGame";
-            this.btnNewGame.Size = new System.Drawing.Size(115, 30);
+            this.btnNewGame.Size = new System.Drawing.Size(98, 30);
             this.btnNewGame.TabIndex = 25;
             this.btnNewGame.Text = "New Game";
             this.btnNewGame.UseVisualStyleBackColor = true;
@@ -259,19 +261,20 @@
             // btnHowToPlay
             // 
             this.btnHowToPlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnHowToPlay.Location = new System.Drawing.Point(602, 257);
+            this.btnHowToPlay.Location = new System.Drawing.Point(579, 295);
             this.btnHowToPlay.Name = "btnHowToPlay";
-            this.btnHowToPlay.Size = new System.Drawing.Size(115, 26);
+            this.btnHowToPlay.Size = new System.Drawing.Size(71, 76);
             this.btnHowToPlay.TabIndex = 26;
-            this.btnHowToPlay.Text = "How to Play";
+            this.btnHowToPlay.Text = "How\r\nto\r\nPlay";
             this.btnHowToPlay.UseVisualStyleBackColor = true;
+            this.btnHowToPlay.Click += new System.EventHandler(this.btnHowToPlay_Click);
             // 
             // btnClear
             // 
             this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.Location = new System.Drawing.Point(622, 220);
+            this.btnClear.Location = new System.Drawing.Point(605, 259);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(74, 30);
+            this.btnClear.Size = new System.Drawing.Size(98, 30);
             this.btnClear.TabIndex = 29;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -280,45 +283,58 @@
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(622, 342);
+            this.btnExit.Location = new System.Drawing.Point(605, 377);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(74, 30);
+            this.btnExit.Size = new System.Drawing.Size(98, 30);
             this.btnExit.TabIndex = 28;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // btnReset
+            // btnResetOP
             // 
-            this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReset.Location = new System.Drawing.Point(622, 184);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(74, 30);
-            this.btnReset.TabIndex = 27;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            this.btnResetOP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResetOP.Location = new System.Drawing.Point(579, 177);
+            this.btnResetOP.Name = "btnResetOP";
+            this.btnResetOP.Size = new System.Drawing.Size(71, 76);
+            this.btnResetOP.TabIndex = 27;
+            this.btnResetOP.Text = "Reset with Original Positions";
+            this.btnResetOP.UseVisualStyleBackColor = true;
+            this.btnResetOP.Click += new System.EventHandler(this.btnResetOP_Click);
             // 
-            // btnRPC
+            // btnRPS
             // 
-            this.btnRPC.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnRPC.Location = new System.Drawing.Point(602, 289);
-            this.btnRPC.Name = "btnRPC";
-            this.btnRPC.Size = new System.Drawing.Size(115, 47);
-            this.btnRPC.TabIndex = 30;
-            this.btnRPC.Text = "Recommended Piece Sets";
-            this.btnRPC.UseVisualStyleBackColor = true;
+            this.btnRPS.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnRPS.Location = new System.Drawing.Point(656, 295);
+            this.btnRPS.Name = "btnRPS";
+            this.btnRPS.Size = new System.Drawing.Size(71, 76);
+            this.btnRPS.TabIndex = 30;
+            this.btnRPS.Text = "Recom-mended Piece Sets";
+            this.btnRPS.UseVisualStyleBackColor = true;
+            this.btnRPS.Click += new System.EventHandler(this.btnRPS_Click);
+            // 
+            // btnResetNP
+            // 
+            this.btnResetNP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResetNP.Location = new System.Drawing.Point(656, 177);
+            this.btnResetNP.Name = "btnResetNP";
+            this.btnResetNP.Size = new System.Drawing.Size(71, 76);
+            this.btnResetNP.TabIndex = 31;
+            this.btnResetNP.Text = "Reset with\r\nNew Positions";
+            this.btnResetNP.UseVisualStyleBackColor = true;
+            this.btnResetNP.Click += new System.EventHandler(this.btnResetNP_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(764, 557);
-            this.Controls.Add(this.btnRPC);
+            this.ClientSize = new System.Drawing.Size(754, 557);
+            this.Controls.Add(this.btnResetNP);
+            this.Controls.Add(this.btnRPS);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.btnReset);
+            this.Controls.Add(this.btnResetOP);
             this.Controls.Add(this.btnHowToPlay);
             this.Controls.Add(this.btnNewGame);
             this.Controls.Add(this.lblFileH);
@@ -338,9 +354,9 @@
             this.Controls.Add(this.lblFileB);
             this.Controls.Add(this.lblFileA);
             this.Controls.Add(this.board);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(780, 596);
-            this.MinimumSize = new System.Drawing.Size(160, 160);
             this.Name = "MainForm";
             this.Text = "Endgame Checkmate Practice";
             this.ResumeLayout(false);
@@ -370,8 +386,9 @@
         private System.Windows.Forms.Button btnHowToPlay;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Button btnReset;
-        private System.Windows.Forms.Button btnRPC;
+        private System.Windows.Forms.Button btnResetOP;
+        private System.Windows.Forms.Button btnRPS;
+        private System.Windows.Forms.Button btnResetNP;
     }
 }
 

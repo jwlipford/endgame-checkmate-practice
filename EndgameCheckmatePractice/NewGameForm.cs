@@ -47,6 +47,12 @@ namespace EndgameCheckmatePractice
             this.Close();
         }
 
+        private void btnRPC_Click(object sender, EventArgs e)
+        // Open Recommended Piece Sets document
+        {
+            mainForm.btnRPS_Click(null, null);
+        }
+
         private void countPieces(object sender, EventArgs e)
         // Counts the number of pieces -- the sum of the numbers in the NumericUpDown boxes, plus
         // one for the White King. Sets numPieces and lblNumPieces.Text accordingly. Also sets
@@ -55,10 +61,10 @@ namespace EndgameCheckmatePractice
         {
             numPieces = 1;
             foreach (NumericUpDown nud in nuds)
-                numPieces += (int)(nud.Value);
+                numPieces += (int)nud.Value;
 
             lblNumPieces.Text = "Number of pieces: " + numPieces;
-            if (numPieces > 8) // The player can have up to 8 pieces
+            if (numPieces < 2 || 8 < numPieces) // numPieces should be in range [2,8]
             {
                 lblNumPieces.ForeColor = Color.Maroon;
                 btnStart.Enabled = false;
@@ -71,12 +77,12 @@ namespace EndgameCheckmatePractice
         }
 
         private void btnStart_Click(object sender, EventArgs e)
-        // Tells the MainForm to start a new game with the indicated pieces, and closes this Form.
+        // Tells the MainForm to start a new game with the indicated pieces, and closes this Form
         {
-            // When this method is called, numPieces should not exceed 8 because btnStart should
-            // have been disabled if so. However, check anyway.
-            if (numPieces > 8)
-                throw new Exception("numPieces > 8");
+            // When this method is called, numPieces should be in range [2,8] because btnStart
+            // should have been disabled if so. However, check anyway.
+            if (numPieces < 2 || 8 < numPieces)
+                throw new Exception("numPieces not in range [2,8]");
 
             Type[] whitePieceTypes = new Type[numPieces];
             int i = 0;
