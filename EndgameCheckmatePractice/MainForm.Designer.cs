@@ -250,7 +250,7 @@
             // btnNewGame
             // 
             this.btnNewGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewGame.Location = new System.Drawing.Point(605, 141);
+            this.btnNewGame.Location = new System.Drawing.Point(605, 135);
             this.btnNewGame.Name = "btnNewGame";
             this.btnNewGame.Size = new System.Drawing.Size(98, 30);
             this.btnNewGame.TabIndex = 25;
@@ -261,7 +261,7 @@
             // btnHowToPlay
             // 
             this.btnHowToPlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnHowToPlay.Location = new System.Drawing.Point(579, 295);
+            this.btnHowToPlay.Location = new System.Drawing.Point(579, 289);
             this.btnHowToPlay.Name = "btnHowToPlay";
             this.btnHowToPlay.Size = new System.Drawing.Size(71, 76);
             this.btnHowToPlay.TabIndex = 26;
@@ -272,7 +272,7 @@
             // btnClear
             // 
             this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.Location = new System.Drawing.Point(605, 259);
+            this.btnClear.Location = new System.Drawing.Point(605, 253);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(98, 30);
             this.btnClear.TabIndex = 29;
@@ -283,7 +283,7 @@
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(605, 377);
+            this.btnExit.Location = new System.Drawing.Point(605, 371);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(98, 30);
             this.btnExit.TabIndex = 28;
@@ -294,7 +294,7 @@
             // btnResetOP
             // 
             this.btnResetOP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResetOP.Location = new System.Drawing.Point(579, 177);
+            this.btnResetOP.Location = new System.Drawing.Point(579, 171);
             this.btnResetOP.Name = "btnResetOP";
             this.btnResetOP.Size = new System.Drawing.Size(71, 76);
             this.btnResetOP.TabIndex = 27;
@@ -305,7 +305,7 @@
             // btnRPS
             // 
             this.btnRPS.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnRPS.Location = new System.Drawing.Point(656, 295);
+            this.btnRPS.Location = new System.Drawing.Point(656, 289);
             this.btnRPS.Name = "btnRPS";
             this.btnRPS.Size = new System.Drawing.Size(71, 76);
             this.btnRPS.TabIndex = 30;
@@ -316,7 +316,7 @@
             // btnResetNP
             // 
             this.btnResetNP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResetNP.Location = new System.Drawing.Point(656, 177);
+            this.btnResetNP.Location = new System.Drawing.Point(656, 171);
             this.btnResetNP.Name = "btnResetNP";
             this.btnResetNP.Size = new System.Drawing.Size(71, 76);
             this.btnResetNP.TabIndex = 31;

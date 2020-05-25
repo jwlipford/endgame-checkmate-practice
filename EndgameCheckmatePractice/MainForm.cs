@@ -22,11 +22,19 @@ namespace EndgameCheckmatePractice
         public BlackKing BlackKing;
         // Black's king
 
-        private List<ChessSquare> whiteStartSquares;
-
-        private ChessSquare blackKingStartSquare;
-
         public ChessPiece SelectedPiece;
+        // The piece the user most recently clicked, which will be moved if the user clicks a
+        // square it can move to
+
+        private Tuple<Type[], ChessSquare[], ChessSquare> startData;
+        // Data about the game's start, for use when either Reset button is clicked. The elements
+        // in the tuple should be:
+        //   1. The original Types of the white pieces
+        //   2. The squares the white pieces were originally on (in order corresponding to the
+        //      order of the first element)
+        //   3. The square the Black King was originally on
+        // To avoid confusion about the purpose of these elements, they are contained inside this
+        // tuple rather than stored as separate variables.
 
         public MainForm()
         {
@@ -50,8 +58,8 @@ namespace EndgameCheckmatePractice
             this.Close();
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
-        // Removes all pieces from the board, and disables all squares
+        private void clearBoard()
+        // Removes all pieces from the board, and disables all squares.
         {
             foreach (ChessSquare square in SQUARES)
             {
@@ -64,35 +72,55 @@ namespace EndgameCheckmatePractice
             BlackKing = null;
         }
 
-        private void btnResetOP_Click(object sender, EventArgs e)
-        // Restarts game with pieces in their original positions
+        private void btnClear_Click(object sender, EventArgs e)
+        // Removes all pieces from the board, disables all squares, and clears startData,
+        // preventing resets
         {
-            MessageBox.Show("Not implemented");
-            return;
-
-            // TODO: Deal with pieces that are captured
-
-            numMoves = 0;
-            BlackKing.Move(blackKingStartSquare);
-            for (int i = 0; i < White.Count; ++i)
-                White[i].Move(whiteStartSquares[i]);
-            foreach (ChessSquare square in SQUARES)
-                if (square.Piece != null && square.Piece.WHITE)
-                    square.SetEnabled(true);
-                else
-                    square.SetEnabled(false);
+            clearBoard();
+            startData = null;
         }
 
         private void btnResetNP_Click(object sender, EventArgs e)
         // Restarts game with pieces in new positions
         {
-            MessageBox.Show("Not implemented");
-            return;
+            if (startData == null)
+            {
+                MessageBox.Show("No game to reset");
+                return;
+            }
 
+            StartNewGame(startData.Item1);
+
+            // After starting new game, pieces's original positions have changed, so update
+            // startData.
+            for (int i = 0; i < White.Count; ++i)
+                startData.Item2[i] = White[i].Square;
+            // startData.Item3, which unlike the other 2 elements is not an array, is immutable,
+            // so overwrite the whole tuple with a new one to change Item3.
+            startData = Tuple.Create(startData.Item1, startData.Item2, BlackKing.Square);
         }
 
+        private void btnResetOP_Click(object sender, EventArgs e)
+        // Restarts game with pieces in their original positions
+        {
+            if (startData == null)
+            {
+                MessageBox.Show("No game to reset");
+                return;
+            }
 
-        // TODO: What if the user clicks this twice?
+            clearBoard();
+            BlackKing = new BlackKing(startData.Item3);
+            White = new List<ChessPiece>(capacity: startData.Item2.Length);
+            for (int i = 0; i < startData.Item1.Length; ++i)
+                White.Add(
+                    (ChessPiece)(startData.Item1[i]
+                    .GetConstructor(types: new Type[] { typeof(ChessSquare) })
+                    .Invoke(parameters: new object[] { startData.Item2[i] })));
+            foreach (ChessPiece piece in White)
+                piece.Square.SetEnabled(true);
+        }
+
         private void btnNewGame_Click(object sender, EventArgs e)
         // Opens a NewGameForm
         {
@@ -158,8 +186,7 @@ namespace EndgameCheckmatePractice
         public void StartNewGame(Type[] whitePieceTypes)
         // Starts a new game with a Black King and white pieces of Types whitePieceTypes. Each Type
         // in whitePieceTypes must be a subclass of ChessPiece, must not be abstract, and must be
-        // white. Use this method when a button that says something like "King, Rook, and Rook vs
-        // King" is clicked.
+        // white. In case there are already pieces on the board, the board is cleared first.
         {
             // Check whitePieceTypes for argument errors
             foreach (Type type in whitePieceTypes)
@@ -172,7 +199,7 @@ namespace EndgameCheckmatePractice
             }
 
             // Basic setup
-            btnClear_Click(null, null);
+            clearBoard();
             numMoves = 0;
             White = new List<ChessPiece>(capacity: whitePieceTypes.Length);
             byte numPieces = (byte)(whitePieceTypes.Length + 1); // +1 for Black King
@@ -182,7 +209,7 @@ namespace EndgameCheckmatePractice
             ChessSquare[] initSquares = randomSquares(numPieces);
             BlackKing = new BlackKing(initSquares[0]);
             for (int i = 1; i < initSquares.Length; ++i)
-                White.Add( // Dis wite heer bout to git complikated
+                White.Add( // Dis wite heer bout to git complikated :)
                     (ChessPiece)(whitePieceTypes[i - 1]
                     .GetConstructor(types: new Type[] { typeof(ChessSquare) })
                     .Invoke(parameters: new object[] { initSquares[i] })));
@@ -198,11 +225,10 @@ namespace EndgameCheckmatePractice
                 BlackKing.FindMoves(SQUARES);
             }
 
-            // Set start squares
-            blackKingStartSquare = BlackKing.Square;
-            whiteStartSquares = new List<ChessSquare>(capacity: whitePieceTypes.Length);
-            foreach (ChessPiece piece in White)
-                whiteStartSquares.Add(piece.Square);
+            // Set startData
+            startData = Tuple.Create(whitePieceTypes, new ChessSquare[White.Count], BlackKing.Square);
+            for (int i = 0; i < White.Count; ++i)
+                startData.Item2[i] = White[i].Square;
 
             // Enable squares with white pieces
             foreach (ChessPiece piece in White)
