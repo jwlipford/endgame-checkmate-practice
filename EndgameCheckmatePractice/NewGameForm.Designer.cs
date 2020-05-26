@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewGameForm));
             this.labelChoose = new System.Windows.Forms.Label();
             this.lblVersus = new System.Windows.Forms.Label();
@@ -65,6 +66,7 @@
             this.nudMann = new System.Windows.Forms.NumericUpDown();
             this.lblP4 = new System.Windows.Forms.Label();
             this.btnRPC = new System.Windows.Forms.Button();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbWK)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbWQ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQueen)).BeginInit();
@@ -528,7 +530,7 @@
             // btnRPC
             // 
             this.btnRPC.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnRPC.Location = new System.Drawing.Point(503, 154);
+            this.btnRPC.Location = new System.Drawing.Point(503, 144);
             this.btnRPC.Name = "btnRPC";
             this.btnRPC.Size = new System.Drawing.Size(115, 47);
             this.btnRPC.TabIndex = 61;
@@ -536,12 +538,18 @@
             this.btnRPC.UseVisualStyleBackColor = true;
             this.btnRPC.Click += new System.EventHandler(this.btnRPC_Click);
             // 
+            // toolTip
+            // 
+            this.toolTip.AutoPopDelay = 5000;
+            this.toolTip.InitialDelay = 400;
+            this.toolTip.ReshowDelay = 100;
+            // 
             // NewGameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(630, 212);
+            this.ClientSize = new System.Drawing.Size(630, 201);
             this.Controls.Add(this.btnRPC);
             this.Controls.Add(this.lblP4);
             this.Controls.Add(this.nudMann);
@@ -646,5 +654,6 @@
         private System.Windows.Forms.NumericUpDown nudMann;
         private System.Windows.Forms.Label lblP4;
         private System.Windows.Forms.Button btnRPC;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }

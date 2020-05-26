@@ -21,6 +21,18 @@ namespace EndgameCheckmatePractice
         {
             InitializeComponent();
 
+            toolTip.SetToolTip(pbWK, "King");
+            toolTip.SetToolTip(pbWQ, "Queen");
+            toolTip.SetToolTip(pbWR, "Rook");
+            toolTip.SetToolTip(pbWB, "Bishop");
+            toolTip.SetToolTip(pbWN, "Knight");
+            toolTip.SetToolTip(pbWMann, "Mann");
+            toolTip.SetToolTip(pbWWazir, "Wazir");
+            toolTip.SetToolTip(pbWFerz, "Ferz");
+            toolTip.SetToolTip(pbWChampion, "Champion");
+            toolTip.SetToolTip(pbWWizard, "Wizard");
+            toolTip.SetToolTip(pbBK, "King");
+
             this.mainForm = mainForm;
             numPieces = 1;
 
