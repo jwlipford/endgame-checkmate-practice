@@ -10,7 +10,7 @@ namespace EndgameCheckmatePractice
 
         public override Image ICON
         {
-            get { return Properties.Resources.black_king; } // Relative filepath
+            get { return Properties.Resources.black_king; }
         }
 
         private readonly Random RANDOM;

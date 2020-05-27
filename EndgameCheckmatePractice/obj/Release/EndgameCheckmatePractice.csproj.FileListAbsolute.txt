@@ -1,0 +1,12 @@
+C:\Users\Jeffrey Lipford\Documents\GitHub\endgame-checkmate-practice\EndgameCheckmatePractice\bin\Release\EndgameCheckmatePractice.exe.config
+C:\Users\Jeffrey Lipford\Documents\GitHub\endgame-checkmate-practice\EndgameCheckmatePractice\bin\Release\EndgameCheckmatePractice.exe
+C:\Users\Jeffrey Lipford\Documents\GitHub\endgame-checkmate-practice\EndgameCheckmatePractice\bin\Release\EndgameCheckmatePractice.pdb
+C:\Users\Jeffrey Lipford\Documents\GitHub\endgame-checkmate-practice\EndgameCheckmatePractice\obj\Release\EndgameCheckmatePractice.csprojAssemblyReference.cache
+C:\Users\Jeffrey Lipford\Documents\GitHub\endgame-checkmate-practice\EndgameCheckmatePractice\obj\Release\EndgameCheckmatePractice.documents.LargeTextInfoForm.resources
+C:\Users\Jeffrey Lipford\Documents\GitHub\endgame-checkmate-practice\EndgameCheckmatePractice\obj\Release\EndgameCheckmatePractice.MainForm.resources
+C:\Users\Jeffrey Lipford\Documents\GitHub\endgame-checkmate-practice\EndgameCheckmatePractice\obj\Release\EndgameCheckmatePractice.NewGameForm.resources
+C:\Users\Jeffrey Lipford\Documents\GitHub\endgame-checkmate-practice\EndgameCheckmatePractice\obj\Release\EndgameCheckmatePractice.Properties.Resources.resources
+C:\Users\Jeffrey Lipford\Documents\GitHub\endgame-checkmate-practice\EndgameCheckmatePractice\obj\Release\EndgameCheckmatePractice.csproj.GenerateResource.cache
+C:\Users\Jeffrey Lipford\Documents\GitHub\endgame-checkmate-practice\EndgameCheckmatePractice\obj\Release\EndgameCheckmatePractice.csproj.CoreCompileInputs.cache
+C:\Users\Jeffrey Lipford\Documents\GitHub\endgame-checkmate-practice\EndgameCheckmatePractice\obj\Release\EndgameCheckmatePractice.exe
+C:\Users\Jeffrey Lipford\Documents\GitHub\endgame-checkmate-practice\EndgameCheckmatePractice\obj\Release\EndgameCheckmatePractice.pdb

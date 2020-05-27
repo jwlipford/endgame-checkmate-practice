@@ -13,7 +13,7 @@ namespace EndgameCheckmatePractice
         // After Form1 construction, SQUARES will hold 8*8=64 Squares, which are added to Panel
         // board
 
-        int numMoves;
+        private int numMoves;
         // Number of moves White has played
 
         public List<ChessPiece> White;
@@ -236,9 +236,10 @@ namespace EndgameCheckmatePractice
         }
 
         public void TakeBlackTurn(out bool gameOver)
-        // Takes Black's turn, moving its king. Checks for and handles checkmate, stalemate, and
-        // draw by lack of material. In these situations, sets gameOver to true; otherwise, sets it
-        // to false. Does not enable/disable squares.
+        // Takes Black's turn, moving its king. Checks for and handles checkmate and stalemate.
+        // Handles draw for King vs King but not for any other situation such as King and Bishop
+        // vs King. In checkmate, stalemate, or draw, sets gameOver to true; otherwise, sets it to
+        // false. Does not enable/disable squares.
         {
             ++numMoves;
             AnalyzeAttacks();
@@ -252,9 +253,9 @@ namespace EndgameCheckmatePractice
                     White.Remove(BlackKingChoice.Piece);
                 BlackKing.Move(BlackKingChoice);
 
-                if (White.Count == 1) // Draw by lack of material    // DUMMY -- extend this
+                if (White.Count == 1) // Draw by lack of material
                 {
-                    // TODO: Find how to increase font size (probably make a custom message-box form)
+                    // This would be slightly better with a custom message box with a bigger font.
                     MessageBox.Show("Draw by lack of material 😞\nIn " + numMoves + " moves");
                     gameOver = true;
                 }
@@ -267,7 +268,6 @@ namespace EndgameCheckmatePractice
             else // Black King cannot move, is in checkmate or stalemate
             {
                 if (BlackKing.Square.WhiteAttacked)
-                    //MessageBox.Show("Checkmate! 😁\nIn " + numMoves + " moves");
                     MessageBox.Show("Checkmate! 😁\nIn " + numMoves + " moves");
                 else
                     MessageBox.Show("Stalemate 😞\nIn " + numMoves + " moves");

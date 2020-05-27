@@ -55,12 +55,12 @@ namespace EndgameCheckmatePractice
             if (COL % 2 == ROW % 2)
             {
                 this.BACK_COLOR_DISABLED = Color.FromArgb(unchecked((int)0xFF663300)); // dark brown
-                this.BACK_COLOR_ENABLED = Color.FromArgb(unchecked((int)0xFF000066));
+                this.BACK_COLOR_ENABLED = Color.FromArgb(unchecked((int)0xFF000066)); // dark blue
             }
             else
             {
                 this.BACK_COLOR_DISABLED = Color.FromArgb(unchecked((int)0xFFCC6600)); // light brown
-                this.BACK_COLOR_ENABLED = Color.FromArgb(unchecked((int)0xFF0033CC));
+                this.BACK_COLOR_ENABLED = Color.FromArgb(unchecked((int)0xFF0033CC)); // light blue
             }
             
             SetEnabled(false);
